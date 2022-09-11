@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container is fluid">
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content buttons is-centered">
+                            <button class="button is-info is-inverted is-large is-responsive is-rounded"><span
+                                    class="icon" id="newGame">
+                                    <i class="bi bi-x-lg"></i>
+                                </span><span> New
+                                    Game</span></button>
+                        </div>
+
+                        <!-- player label -->
+
+                        <div class="columns is-mobile">
+                            <div class="column is-half is-offset-2">
+                                <p class="title 2">Player 1</p>
+
+                                <!-- Total Score -->
+
+                                <p class="subtitle is-3 ml-5 mt-3" id="totalScore1">100</p>
+                            </div>
+                            <div class="column is-half ">
+                                <p class="title 2">Player 2</p>
+
+                                <!-- Total Score -->
+
+                                <p class="subtitle is-3 ml-5 mt-3" id="totalScore2">100</p>
+                            </div>
+                        </div>
+                        <!-- Current Score player 1-->
+
+                        <div class="columns is-mobile">
+                            <div class="column is-half is-offset-2">
+                                <div class="has-text-centered">
+                                    <p id="scoreBox1">0</p>
+                                </div>
+                            </div>
+                            <!-- 
+                                Current Score player 2 -->
+
+                            <div class="column is-half">
+                                <div class="has-text-centered">
+                                    <p id="scoreBox2">0</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-half is-offset-2">
+                                <button class="button" id="rollDice">Roll Dice</button>
+                            </div>
+                            <div class="column is-half is-offset-0">
+                                <button class="button" id="holdValue">Hold value</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+
+</html>
