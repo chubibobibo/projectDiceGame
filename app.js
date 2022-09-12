@@ -16,7 +16,6 @@ let randomRoll = function () {
 
 let isMyTurn = true;
 let isGameOver = false;
-let score = 0
 let currentArr1 = []
 let totalArr1 = []
 let currentArr2 = []
@@ -39,39 +38,38 @@ let totalArr2 = []
 
 function updateScore() {
 
-    if (randomRoll() === 1) {
+    if (randomRoll() === 1 && isMyTurn) {
         // randomRoll() = 0
         currentArr1 = []
         currentScore1.textContent = '0'
         console.log(currentArr1)
         isMyTurn = false
-        alert('player rolls 1')
+        alert('player1 rolls 1')
+        console.log('player rolls 1')
+
     }
-    if (isMyTurn === true) {
-        currentArr1.push(randomRoll())
+    else if (isMyTurn === true) {
+        currentScore1.textContent = randomRoll()
+        currentArr1.push(parseInt(currentScore1.textContent))
         console.log(currentArr1)
-        currentScore1.textContent = currentArr1.reduce((first, second) => {
-            return first + second
-        })
     }
 
 }
 
 function udpateScore2() {
 
-    if (randomRoll() === 1) {
+    if (randomRoll() === 1 && !isMyTurn) {
         // randomRoll() = 0
         currentArr2 = []
         currentScore2.textContent = '0'
-        // alert('player 2 rolls 1')
         isMyTurn = true
+        alert('player 2 rolls 1')
+        console.log('player 2 rolls 1')
     }
-    if (isMyTurn === false) {
-        currentArr2.push(randomRoll())
+    else if (isMyTurn === false) {
+        currentScore2.textContent = randomRoll()
+        currentArr2.push(parseInt(currentScore2.textContent))
         console.log(currentArr2)
-        currentScore2.textContent = currentArr2.reduce((first, second) => {
-            return first + second
-        })
     }
 
 }
@@ -81,30 +79,41 @@ function holdValue1() {
     totalScore1.textContent = currentArr1.reduce((first, second) => {
         return first + second
     })
-    totalArr1.push(currentArr1.reduce((first, second) => {
-        return first + second
-    }))
+    // totalArr1.push(currentArr1.reduce((first, second) => {
+    //     return first + second
+    // }))
     // prevent from continuing to play after hold is pressed
     isMyTurn = false
+    console.log('player1 holds the  value')
+
 }
 function holdValue2() {
     currentScore2.textContent = '0'
     totalScore2.textContent = currentArr2.reduce((first, second) => {
         return first + second
     })
-    totalArr2.push(currentArr2.reduce((first, second) => {
-        return first + second
-    }))
-    // prevent from continuing to play after hold is pressed
+    // totalArr2.push(currentArr2.reduce((first, second) => {
+    //     return first + second
+    // }))
+    // prevent from continuing to play after hold value is pressed
     isMyTurn = true
+    console.log('player2 holds the value')
+
+}
+
+if (totalScore1 > 20 || totalScore2 > 20) {
+    isGameOver = true
+
 }
 
 
 rollDice.addEventListener('click', function () {
-    if (isMyTurn && !isGameOver) {
+    if (isMyTurn === true && !isGameOver) {
         updateScore()
     }
-    if (!isMyTurn && !isGameOver) {
+    // problem with currentScore2 updating right after player1 rolls a 1
+    // changed to else if insted of nested if
+    else if (isMyTurn === false && !isGameOver) {
         udpateScore2()
     }
 
@@ -129,6 +138,7 @@ holdValue.addEventListener('click', function () {
     }
     if (!isMyTurn && !isGameOver) {
         holdValue2()
+        isMyTurn = true
     }
 })
 
