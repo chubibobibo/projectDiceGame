@@ -39,41 +39,41 @@ let totalArr2 = []
 
 function updateScore() {
 
+    if (randomRoll() === 1) {
+        // randomRoll() = 0
+        alert('player rolls 1')
+        currentArr1 = []
+        currentScore1.textContent = '0'
+        isMyTurn = false
+
+    }
     currentArr1.push(randomRoll())
     console.log(currentArr1)
     currentScore1.textContent = currentArr1.reduce((first, second) => {
         return first + second
     })
-    if (randomRoll() === 1) {
-        // randomRoll() = 0
-        currentArr1 = []
-        currentScore1.textContent = '0'
-        isMyTurn = false
-
-
-
-    }
 
 }
 
 function udpateScore2() {
 
+    if (randomRoll() === 1) {
+        // randomRoll() = 0
+        alert('player 2 rolls 1')
+        currentArr2 = []
+        currentScore2.textContent = '0'
+        isMyTurn = true
+    }
     currentArr2.push(randomRoll())
     console.log(currentArr2)
     currentScore2.textContent = currentArr2.reduce((first, second) => {
         return first + second
     })
-    if (randomRoll() === 1) {
-        // randomRoll() = 0
-        currentArr2 = []
-        currentScore2.textContent = '0'
-        isMyTurn = true
-    }
 
 }
 
 function holdValue1() {
-    currentScore1.textContent = 0
+    currentScore1.textContent = '0'
     totalScore1.textContent = currentArr1.reduce((first, second) => {
         return first + second
     })
@@ -84,7 +84,7 @@ function holdValue1() {
     isMyTurn = false
 }
 function holdValue2() {
-    currentScore2.textContent = 0
+    currentScore2.textContent = '0'
     totalScore2.textContent = currentArr2.reduce((first, second) => {
         return first + second
     })
@@ -92,7 +92,7 @@ function holdValue2() {
         return first + second
     }))
     // prevent from continuing to play after hold is pressed
-    isMyTurn = false
+    isMyTurn = true
 }
 
 
