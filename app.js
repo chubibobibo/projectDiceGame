@@ -41,17 +41,19 @@ function updateScore() {
 
     if (randomRoll() === 1) {
         // randomRoll() = 0
-        alert('player rolls 1')
         currentArr1 = []
         currentScore1.textContent = '0'
+        console.log(currentArr1)
         isMyTurn = false
-
+        alert('player rolls 1')
     }
-    currentArr1.push(randomRoll())
-    console.log(currentArr1)
-    currentScore1.textContent = currentArr1.reduce((first, second) => {
-        return first + second
-    })
+    if (isMyTurn === true) {
+        currentArr1.push(randomRoll())
+        console.log(currentArr1)
+        currentScore1.textContent = currentArr1.reduce((first, second) => {
+            return first + second
+        })
+    }
 
 }
 
@@ -59,16 +61,18 @@ function udpateScore2() {
 
     if (randomRoll() === 1) {
         // randomRoll() = 0
-        alert('player 2 rolls 1')
         currentArr2 = []
         currentScore2.textContent = '0'
+        // alert('player 2 rolls 1')
         isMyTurn = true
     }
-    currentArr2.push(randomRoll())
-    console.log(currentArr2)
-    currentScore2.textContent = currentArr2.reduce((first, second) => {
-        return first + second
-    })
+    if (isMyTurn === false) {
+        currentArr2.push(randomRoll())
+        console.log(currentArr2)
+        currentScore2.textContent = currentArr2.reduce((first, second) => {
+            return first + second
+        })
+    }
 
 }
 
@@ -105,6 +109,18 @@ rollDice.addEventListener('click', function () {
     }
 
 })
+newGame.addEventListener('click', function () {
+    console.log('clicked')
+    currentScore1.textContent = 0
+    totalScore1.textContent = 0
+    currentArr1 = []
+    totalArr1 = []
+    currentScore2.textContent = 0
+    totalScore2.textContent = 0
+    currentArr2 = []
+    totalArr2 = []
+    isMyTurn = true
+})
 
 
 holdValue.addEventListener('click', function () {
@@ -115,6 +131,7 @@ holdValue.addEventListener('click', function () {
         holdValue2()
     }
 })
+
 
 
 
