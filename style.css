@@ -137,8 +137,13 @@ table {
 
 /* start of my css */
 
+body {
+    height: 50rem;
+}
+
 .card {
-    background-color: #f5ebe0;
+    /* background-color: #f5ebe0; */
+    background: linear-gradient(to right, #f5ebe0, #d5bdaf);
 }
 
 #scoreBox1,
@@ -147,6 +152,27 @@ table {
     height: 130px;
     border-radius: 10px;
     background-color: #bde0fe;
+    align-items: center;
+}
+
+box1,
+box2 {
+    display: inline-block;
+    text-align: center;
+}
+
+#dice {
+    width: 9rem;
+    height: 9rem;
+}
+
+.messageArea {
+    display: inline-block;
+}
+
+#message {
+    text-transform: uppercase;
+    color: green;
 }
 
 .winner {
@@ -157,6 +183,13 @@ table {
     color: red;
 }
 
-.total {
-    color: red;
+p,
+h1,
+button,
+span {
+    font-family: 'Lato', sans-serif;
 }
+
+/* .total {
+    color: red;
+} */
