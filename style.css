@@ -354,6 +354,7 @@ body {
     align-items: center;
 }
 
+
 box1,
 box2 {
     display: inline-block;
@@ -393,6 +394,104 @@ span {
     font-family: 'Lato', sans-serif;
 }
 
+.btnArea {
+    width: 300px
+}
+
+
+
 /* .total {
     color: red;
 } */
+@media(min-width: 320px) {
+
+    #playerOne,
+    #playerTwo {
+        font-size: 25px;
+        justify-content: left;
+
+    }
+
+    .total {
+        font-size: 10px;
+    }
+
+    #scoreBox1,
+    #scoreBox2 {
+        width: 80px;
+        height: 80px;
+    }
+
+    #appArea {
+        width: 400px;
+    }
+
+
+}
+
+
+
+
+
+@media(min-width: 480px) {
+
+    #playerOne,
+    #playerTwo {
+        font-size: 30px;
+    }
+
+    .total {
+        font-size: 10px;
+    }
+
+    #scoreBox1,
+    #scoreBox2 {
+        width: 100px;
+        height: 100px;
+    }
+
+    #appArea {
+        width: 550px;
+    }
+
+
+
+
+    @media (min-width: 720px) {
+
+        #playerOne,
+        #playerTwo {
+            font-size: 35px;
+        }
+
+        #scoreBox1,
+        #scoreBox2 {
+            width: 120px;
+            height: 120px;
+        }
+
+        #appArea {
+            width: 600px;
+        }
+
+        @media (min-width: 1024px) {
+
+            #playerOne,
+            #playerTwo {
+                font-size: 40px;
+            }
+
+            #scoreBox1,
+            #scoreBox2 {
+                width: 130px;
+                height: 130px;
+            }
+
+            #appArea {
+                width: 600px;
+            }
+
+        }
+
+    }
+}

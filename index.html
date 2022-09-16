@@ -14,9 +14,9 @@
 
 <body>
     <section class="section">
-        <div class="container is fluid">
-            <div class="columns">
-                <div class="column">
+        <div class="container">
+            <div class="columns main">
+                <div class="column is-mobile" id="appArea">
                     <div class="card">
                         <div class="card-content buttons is-centered">
                             <button class="button is-info is-inverted is-large is-responsive is-rounded"
@@ -26,17 +26,17 @@
 
                         <!-- player label -->
 
-                        <div class="columns is-mobile">
-                            <div class="column is-half is-offset-2 mb-6">
-                                <p class="title 2" id="playerOne">Player 1</p>
+                        <div class="columns is-mobile mr-6">
+                            <div class="column is-half-mobile is-half-tablet is-offset-2 mb-6">
+                                <p class="title 2 is-size-4-mobile" id="playerOne">Player 1</p>
 
                                 <!-- Total Score -->
 
                                 <p class="title is-5 total">Total Score</p>
                                 <p class="subtitle is-3 ml-6 mt-3 total" id="totalScore1">0</p>
                             </div>
-                            <div class="column is-half ">
-                                <p class="title 2" id="playerTwo">Player 2</p>
+                            <div class="column is-half is-mobile is-offset-">
+                                <p class="title 2 is-size-4-mobile" id="playerTwo">Player 2</p>
                                 <p class="title is-5 total">Total Score</p>
 
 
@@ -57,9 +57,9 @@
 
                             <!-- dice area -->
 
-                            <div class="column is-one-third has-text-centered diceArea">
+                            <div class="column is-one-third has-text-centered diceArea btnArea">
                                 <p class=""></p>
-                                <img src="assets/dice1.png" alt="" id="dice">
+                                <img src="assets/dice1.png" alt="" class="img is-square" id="dice">
                             </div>
                             <!-- 
                                 Current Score player 2 -->
@@ -76,11 +76,11 @@
 
                         <div class="columns is-mobile">
                             <div class="column is-one-third has-text-centered">
-                                <button class="button ml-1" id="rollDice">Roll Dice</button>
+                                <button class="button ml-1 is-medium is-responsive" id="rollDice">Roll Dice</button>
                             </div>
                             <div class="column is-one-third"></div>
-                            <div class="column is-one-third has-text-centered">
-                                <button class="button" id="holdValue">Hold value</button>
+                            <div class="column is-one-third has-text-centered divBtn">
+                                <button class="button is-medium is-responsive" id="holdValue">Hold value</button>
                             </div>
                         </div>
                         <div class="columns messageArea">
