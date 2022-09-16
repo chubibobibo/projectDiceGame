@@ -183,6 +183,10 @@ box2 {
     color: red;
 }
 
+.blue {
+    color: blue;
+}
+
 p,
 h1,
 button,
@@ -376,6 +380,10 @@ box2 {
 
 .loser {
     color: red;
+}
+
+.blue {
+    color: blue;
 }
 
 p,

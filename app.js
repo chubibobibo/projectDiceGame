@@ -1,6 +1,6 @@
 
 // can't use randomRoll separately to provide value for dice image because it gives random num each time it is called
-// instead set the attribute of dice directly inside the function randomRoll
+// instead set the attribute of dice src directly inside the function randomRoll
 function randomRoll() {
     const diceValue = Math.floor(Math.random() * 6) + 1
     dice.setAttribute('src', 'assets/dice' + diceValue + '.png')
@@ -10,6 +10,7 @@ function randomRoll() {
 const player1 = {
     totalScore: document.querySelector('#totalScore1'),
     currentScore: document.querySelector('#scoreBox1'),
+    playerName: document.querySelector('#playerOne'),
     currentArr: [],
     totalArr: []
 }
@@ -17,6 +18,7 @@ const player1 = {
 const player2 = {
     totalScore: document.querySelector('#totalScore2'),
     currentScore: document.querySelector('#scoreBox2'),
+    playerName: document.querySelector('#playerTwo'),
     currentArr: [],
     totalArr: []
 
@@ -30,43 +32,42 @@ let message = document.querySelector('#message')
 let isMyTurn = true;
 let isGameOver = false;
 
+
+
+
 // randomRoll() won't work for reset and dice image because it gives a random number everytime it is called out
 //function reset to reset currentScore when rolling a 1
-
+// .includes() will check the array if it contains a value passed as argument. then will return a boollean
 function reset(player, opponent) {
     if (player.currentArr.includes(1) === true && isMyTurn === true) {
         // rolling a 1 will result in an empty array and a 0 currentScore text
         //should execute player 2 after
         player.currentArr = []
         player.currentScore.textContent = '0'
-        console.log(player.currentArr)
         isMyTurn = false
-        alert(`player 1 rolled 1`)
-        // to keep track of array
-        // console.log('player rolls 1')
+        message.textContent = 'Player 1 rolled 1'
+        // alert(`player 1 rolled 1`)
     }
     if (player.currentArr.includes(1) === true && isMyTurn === false) {
         // rolling a 1 will result in an empty array and a 0 currentScore text
         //should execute player 1 after
         player.currentArr = []
         player.currentScore.textContent = '0'
-        console.log(player.currentArr)
         isMyTurn = true
-        alert(`player 2 rolled 1`)
+        message.textContent = 'Player 2 rolled 1'
+        // alert(`player 2 rolled 1`)
     }
 }
 
 // use randomRoll only for updating scores
-
+//update the currentArr1 and the currentScore1
+//currentScore1 needs to be totaled to use as the currentScore text
+// reduce currentArr1 to display total to curentScore1
 function updateScore(player, opponent) {
-    //update the currentArr1 and the currentScore1
-    //currentScore1 needs to be totaled to use as the currentScore text
     player.currentArr.push(randomRoll())
-    // reduce currentArr1 to display total to curentScore1
     player.currentScore.textContent = player.currentArr.reduce((first, second) => {
         return first + second
     })
-    console.log(player.currentArr)
 }
 
 function holdValue(player, opponent) {
@@ -83,18 +84,17 @@ function holdValue(player, opponent) {
     // prevent from continuing to play after holdValue is pressed
     isMyTurn = false
     winCondition(player1, player2)
-    console.log(`${player}holds the  value`)
-
+    // console.log(`${player}holds the  value`)
 }
 
 function winCondition(player, opponent) {
-    if (player.totalArr.reduce((first, second) => { return first + second }) >= 10) {
+    if (player.totalArr.reduce((first, second) => { return first + second }) >= 100) {
         isGameOver = true;
         player.totalScore.classList.add('winner')
         opponent.totalScore.classList.add('loser')
         message.textContent = 'Player 1 wins'
     }
-    else if (opponent.totalArr.reduce((first, second) => { return first + second }) >= 10) {
+    else if (opponent.totalArr.reduce((first, second) => { return first + second }) >= 100) {
         isGameOver = true;
         opponent.totalScore.classList.add('winner')
         player.totalScore.classList.add('loser')
@@ -102,10 +102,11 @@ function winCondition(player, opponent) {
     }
 }
 
-
 // button event listeners
-
+//check whose turn is it and if the game is still going
+//should update the currentArr
 rollDice.addEventListener('click', function () {
+    message.textContent = ''
     if (isMyTurn === true && !isGameOver) {
         updateScore(player1, player2)
         reset(player1, player2)
@@ -114,7 +115,6 @@ rollDice.addEventListener('click', function () {
         updateScore(player2, player1)
         reset(player2, player1)
     }
-
 })
 
 // holdValue event listener
@@ -129,7 +129,9 @@ holdValueBtn.addEventListener('click', function () {
     }
 })
 
-
+newGameBtn.addEventListener('click', function () {
+    return newGame(player1, player2)
+})
 
 function newGame(player, opponent) {
     console.log('clicked')
@@ -150,6 +152,3 @@ function newGame(player, opponent) {
     message.textContent = ''
 }
 
-newGameBtn.addEventListener('click', function () {
-    return newGame(player1, player2)
-})
